@@ -113,3 +113,17 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", "r") as f:
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
+
+    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    def test_get_none(self):
+        """Test that get returns None on not id or object not found"""
+        storage = FileStorage()
+        for key in storage.all():
+            obj_type, dot, obj_id = key.partition('.')
+            break
+        obj = storage.get('', '')
+        self.assertEqual(obj, None)
+        obj = storage.get('', obj_id)
+        self.assertEqual(obj, None)
+        obj = storage.get(obj_type, '')
+        self.assertEqual(obj, None)

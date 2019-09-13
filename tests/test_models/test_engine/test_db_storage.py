@@ -86,3 +86,19 @@ class TestFileStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
         """Test that save properly saves objects to file.json"""
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def test_get_error(self):
+        """Test that get only accepts two arguments"""
+        storage = DBStorage()
+        storage.reload()
+        for key in storage.all():
+            obj_type = key.split('.')[0]
+            obj_id = key.split('.')[1]
+            break
+        with self.assertRaises(TypeError):
+            storage.get()
+        with self.assertRaises(TypeError):
+            storage.get(obj_type)
+        with self.assertRaises(TypeError):
+            storage.get(obj_type, obj_id, 'test')

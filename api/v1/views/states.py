@@ -6,7 +6,7 @@ from flask import (
 )
 import models
 
-"""All States"""
+
 @app_views.route('/states', strict_slashes=False, methods=['GET'])
 def all_states():
     """ This function gets a list of all states """
@@ -19,7 +19,6 @@ def all_states():
     return ret
 
 
-"""Single State"""
 @app_views.route('/states/<state_id>', strict_slashes=False, methods=['GET'])
 def single_state(state_id):
     """ This function retrieves info for a single state """
@@ -30,7 +29,6 @@ def single_state(state_id):
     return ret
 
 
-""" Delete """
 @app_views.route('/states/<state_id>', strict_slashes=False, methods=['GET'])
 def state_remover(state_id):
     """ This function deletes a state object """
@@ -43,7 +41,6 @@ def state_remover(state_id):
     return ret
 
 
-""" Create """
 @app_views.route('/states', strict_slashes=False, methods=['POST'])
 def state_creator():
     """ This function creates a new state object """
@@ -59,7 +56,7 @@ def state_creator():
     retval = jsonify(cr_state.to_dict())
     return make_response(retval, 201)
 
-""" Update """
+
 @app_views.route('/states/<string:state_id>', strict_slashes=False,
                  methods=['PUT'])
 def state_updater(state_id):

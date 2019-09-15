@@ -1,4 +1,4 @@
-B#!/usr/bin/python3
+#!/usr/bin/python3
 """index to connect to API"""
 from api.v1.views import app_views
 from models import storage

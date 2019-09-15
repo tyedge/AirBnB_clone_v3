@@ -29,7 +29,7 @@ def single_state(state_id):
     return ret
 
 
-@app_views.route('/states/<state_id>', strict_slashes=False, methods=['GET'])
+@app_views.route('/states/<state_id>', strict_slashes=False, methods=['DELETE'])
 def state_remover(state_id):
     """ This function deletes a state object """
     rm_state = models.storage.get("State", state_id)
@@ -45,7 +45,7 @@ def state_remover(state_id):
 def state_creator():
     """ This function creates a new state object """
     response = request.get_json()
-    if reponse is None:
+    if response is None:
         retval = jsonify(error="Not a JSON")
         return make_response(retval, 400)
     if "name" not in response:

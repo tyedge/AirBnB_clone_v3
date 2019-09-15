@@ -80,9 +80,9 @@ class DBStorage:
         if id is None or cls is None:
             return None
         cls_list = self.all(cls)
-        id = cls_dict + '.' + id
-        obj = cls_dict.get(id)
-        return (obj)
+        for obj in cls_list.values():
+            if obj.__class__.__name__ == cls and obj.id == id:
+                return (obj)
 
     def count(self, cls=None):
         """counts the objects in storage"""

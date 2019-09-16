@@ -1,5 +1,8 @@
 #!/usr/bin/python3
+
 """ This modules contains the views for States """
+
+
 from api.v1.views import app_views
 from flask import (
     jsonify, request, abort, make_response
@@ -29,7 +32,8 @@ def single_state(state_id):
     return ret
 
 
-@app_views.route('/states/<state_id>', strict_slashes=False, methods=['DELETE'])
+@app_views.route('/states/<state_id>', strict_slashes=False,
+                 methods=['DELETE'])
 def state_remover(state_id):
     """ This function deletes a state object """
     rm_state = models.storage.get("State", state_id)

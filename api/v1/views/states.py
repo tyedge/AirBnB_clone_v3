@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This modules contains the views for States """
+""" This module contains the views for States """
 
 
 from api.v1.views import app_views

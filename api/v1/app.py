@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-
-"""file to connect to API"""
+""" file to connect to API """
 
 
 from models import storage

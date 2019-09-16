@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """ This modules contains the views for States """
 
 
@@ -14,10 +13,8 @@ import models
 def all_states():
     """ This function gets a list of all states """
     stater = []
-
     for state in models.storage.all("State").values():
         stater.append(state.to_dict())
-
     ret = jsonify(stater)
     return ret
 
